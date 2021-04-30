@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: price-service-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: price-service
+  template:
+    metadata:
+      labels:
+        component: price-service
+    spec:
+      containers:
+        - name: price-service
+          image: josephfajardo/price-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: price-service-clusterip-srv
+spec:
+  selector:
+    component: price-service
+  type: ClusterIP
+  ports:
+    - name: price-service-clusterip
+      protocol: TCP
+      port: 5001
+      targetPort: 5001

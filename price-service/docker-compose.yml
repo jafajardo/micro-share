@@ -1,0 +1,9 @@
+version: '3'
+services:
+  price-service:
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5001:5001"

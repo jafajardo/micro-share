@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: price-service-pod
+  labels:
+    component: price-service
+spec:
+  containers:
+    - name: price-service
+      image: josephfajardo/price-service
+      ports:
+        - containerPort: 5001
